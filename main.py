@@ -1,17 +1,16 @@
 
+def sort_by_most_frequent_char(words):
 
-def sort_by_consonant_vowel_difference(words):
-
-    # Задание 11: Сортировка строк по разнице между количеством согласных и гласных.
+    # Задание 12: Сортировка строк по квадратичной встречаемости самого частого символа.
     # :param words: Список строк.
     # :return: Отсортированный список строк.
 
-    vowels = set('aeiou')
-    def diff(word):
-        consonant_count = sum(1 for char in word if char.lower() not in vowels)
-        vowel_count = sum(1 for char in word if char.lower() in vowels)
-        return abs(consonant_count - vowel_count)
-    return sorted(words, key=diff)
+    from collections import Counter
+    def most_freq_char(word):
+        counter = Counter(word)
+        most_common = counter.most_common(1)[0][1]
+        return most_common ** 2
+    return sorted(words, key=most_freq_char)
 
 words = ["hello", "world", "python", "programming", "algorithm"]
-print("Отсортированные строки:", sort_by_consonant_vowel_difference(words))
+print("Отсортированные строки:", ort_by_most_frequent_char(words))
