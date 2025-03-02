@@ -1,16 +1,21 @@
 
-def sort_by_most_frequent_char(words):
+def sort_by_vowel_consonant_pairs(words):
 
-    # Задание 12: Сортировка строк по квадратичной встречаемости самого частого символа.
+    # Задание 13: Сортировка строк по разнице между количеством сочетаний «гласная-согласная» и «согласная-гласная».
     # :param words: Список строк.
     # :return: Отсортированный список строк.
 
-    from collections import Counter
-    def most_freq_char(word):
-        counter = Counter(word)
-        most_common = counter.most_common(1)[0][1]
-        return most_common ** 2
-    return sorted(words, key=most_freq_char)
+    vowels = set('aeiou')
+    def pair_diff(word):
+        vc = 0
+        cv = 0
+        for i in range(len(word) - 1):
+            if word[i].lower() in vowels and word[i+1].lower() not in vowels:
+                vc += 1
+            elif word[i].lower() not in vowels and word[i+1].lower() in vowels:
+                cv += 1
+        return abs(vc - cv)
+    return sorted(words, key=pair_diff)
 
 words = ["hello", "world", "python", "programming", "algorithm"]
-print("Отсортированные строки:", ort_by_most_frequent_char(words))
+print("Отсортированные строки:", sort_by_vowel_consonant_pairs(words))
