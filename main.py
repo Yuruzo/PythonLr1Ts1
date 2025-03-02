@@ -1,11 +1,21 @@
 
-def count_digits_greater_than_five(s):
-    
-    # Задание 8: Подсчет количества цифр в строке, значение которых больше 5.
-    # :param s: Входная строка.
-    # :return: Количество цифр больше 5.
- 
-    return sum(1 for char in s if char.isdigit() and int(char) > 5)  # Считаем цифры больше 5
+def sort_by_length():
 
-s = "123456789"
-print("Количество цифр больше 5:", count_digits_greater_than_five(s))
+    # Задание 9: Упорядочивание строк по длине.
+    # :return: Отсортированный список строк.
+
+    # Чтение строк с клавиатуры
+    lines = []
+    print("Введите строки (для завершения введите пустую строку):")
+    while True:
+        line = input()
+        if line == "":
+            break
+        lines.append(line)
+    
+    # Сортировка строк по длине
+    sorted_lines = sorted(lines, key=len)
+    return sorted_lines
+
+# Пример использования
+print("Отсортированные строки по длине:", sort_by_length())
