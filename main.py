@@ -1,22 +1,17 @@
 
-def sort_by_word_count():
 
-    # Задание 10: Упорядочивание строк по количеству слов.
+def sort_by_consonant_vowel_difference(words):
+
+    # Задание 11: Сортировка строк по разнице между количеством согласных и гласных.
+    # :param words: Список строк.
     # :return: Отсортированный список строк.
 
-    # Чтение строк с клавиатуры
-    lines = []
-    print("Введите строки (для завершения введите пустую строку):")
-    while True:
-        line = input()
-        if line == "":
-            break
-        lines.append(line)
-    
-    # Сортировка строк по количеству слов
-    sorted_lines = sorted(lines, key=lambda x: len(x.split()))
-    return sorted_lines
+    vowels = set('aeiou')
+    def diff(word):
+        consonant_count = sum(1 for char in word if char.lower() not in vowels)
+        vowel_count = sum(1 for char in word if char.lower() in vowels)
+        return abs(consonant_count - vowel_count)
+    return sorted(words, key=diff)
 
-# Пример использования
-print("Отсортированные строки по количеству слов:", sort_by_word_count())
-
+words = ["hello", "world", "python", "programming", "algorithm"]
+print("Отсортированные строки:", sort_by_consonant_vowel_difference(words))
