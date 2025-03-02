@@ -1,15 +1,14 @@
 
-def elements_between_first_and_second_max(arr):
+def elements_between_first_and_last_max(arr):
 
-    # Задание 16: Нахождение элементов между первым и вторым максимальным.
+    # Задание 17: Нахождение элементов между первым и последним максимальным.
     # :param arr: Целочисленный массив.
     # :return: Список элементов.
 
-    max1 = max(arr)
-    idx1 = arr.index(max1)
-    max2 = max([x for i, x in enumerate(arr) if i != idx1])
-    idx2 = arr.index(max2)
-    return arr[min(idx1, idx2)+1:max(idx1, idx2)]
+    max_val = max(arr)
+    first_idx = arr.index(max_val)
+    last_idx = len(arr) - arr[::-1].index(max_val) - 1
+    return arr[first_idx+1:last_idx]
 
 arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
-print("Элементы между первым и вторым максимальным:", elements_between_first_and_second_max(arr))
+print("Элементы между первым и последним максимальным :", elements_between_first_and_last_max(arr))
