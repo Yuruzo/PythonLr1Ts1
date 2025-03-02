@@ -1,21 +1,21 @@
 
-def sort_by_vowel_consonant_pairs(words):
+def sort_by_ascii_triple_deviation(words):
 
-    # Задание 13: Сортировка строк по разнице между количеством сочетаний «гласная-согласная» и «согласная-гласная».
+    # Задание 14: Сортировка строк по квадратичному отклонению дисперсии максимального среднего веса ASCII-кода тройки символов.
     # :param words: Список строк.
     # :return: Отсортированный список строк.
 
-    vowels = set('aeiou')
-    def pair_diff(word):
-        vc = 0
-        cv = 0
-        for i in range(len(word) - 1):
-            if word[i].lower() in vowels and word[i+1].lower() not in vowels:
-                vc += 1
-            elif word[i].lower() not in vowels and word[i+1].lower() in vowels:
-                cv += 1
-        return abs(vc - cv)
-    return sorted(words, key=pair_diff)
+    def ascii_triple_avg(word):
+        max_avg = 0
+        for i in range(len(word) - 2):
+            avg = (ord(word[i]) + ord(word[i+1]) + ord(word[i+2])) / 3
+            if avg > max_avg:
+                max_avg = avg
+        return max_avg
+    first_max_avg = ascii_triple_avg(words[0])
+    def deviation(word):
+        return (ascii_triple_avg(word) - first_max_avg) ** 2
+    return sorted(words, key=deviation)
 
 words = ["hello", "world", "python", "programming", "algorithm"]
-print("Отсортированные строки:", sort_by_vowel_consonant_pairs(words))
+print("Отсортированные строки:", sort_by_ascii_triple_deviation(words))
