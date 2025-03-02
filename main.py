@@ -1,7 +1,7 @@
 
-def sort_by_length():
+def sort_by_word_count():
 
-    # Задание 9: Упорядочивание строк по длине.
+    # Задание 10: Упорядочивание строк по количеству слов.
     # :return: Отсортированный список строк.
 
     # Чтение строк с клавиатуры
@@ -13,9 +13,10 @@ def sort_by_length():
             break
         lines.append(line)
     
-    # Сортировка строк по длине
-    sorted_lines = sorted(lines, key=len)
+    # Сортировка строк по количеству слов
+    sorted_lines = sorted(lines, key=lambda x: len(x.split()))
     return sorted_lines
 
 # Пример использования
-print("Отсортированные строки по длине:", sort_by_length())
+print("Отсортированные строки по количеству слов:", sort_by_word_count())
+
