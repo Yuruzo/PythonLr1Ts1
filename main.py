@@ -1,12 +1,19 @@
 
-def min_even_element(arr):
+def prime_factors(n):
 
-    # Задание 18: Нахождение минимального четного элемента.
-    # :param arr: Целочисленный массив.
-    # :return: Минимальный четный элемент.
+    # Задание 19: Построение списка всех простых делителей числа.
+    # :param n: Натуральное число.
+    # :return: Список простых делителей.
 
-    even_elements = [x for x in arr if x % 2 == 0]
-    return min(even_elements) if even_elements else None
+    factors = []
+    i = 2
+    while i * i <= n:
+        while n % i == 0:
+            factors.append(i)
+            n = n // i
+        i += 1
+    if n > 1:
+        factors.append(n)
+    return factors
 
-arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
-print("Минимальный четный элемент :", min_even_element(arr))
+print("Простые делители числа 28:", prime_factors(28))
