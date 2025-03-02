@@ -1,11 +1,15 @@
 
-def print_array_indices(arr):
+def elements_between_first_and_second_max(arr):
 
-    # Задание 15: Вывод индексов массива в порядке, соответствующем значениям.
+    # Задание 16: Нахождение элементов между первым и вторым максимальным.
     # :param arr: Целочисленный массив.
-    # :return: Список индексов.
+    # :return: Список элементов.
 
-    return sorted(range(len(arr)), key=lambda i: arr[i])
+    max1 = max(arr)
+    idx1 = arr.index(max1)
+    max2 = max([x for i, x in enumerate(arr) if i != idx1])
+    idx2 = arr.index(max2)
+    return arr[min(idx1, idx2)+1:max(idx1, idx2)]
 
 arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
-print("Индексы массива:", print_array_indices(arr))
+print("Элементы между первым и вторым максимальным:", elements_between_first_and_second_max(arr))
