@@ -1,18 +1,12 @@
 
+def count_numbers_less_than_five(s):
+    
+    # Задание 6: Подсчет количества чисел в строке, значение которых меньше 5.
+    # :param s: Входная строка.
+    # :return: Количество чисел меньше 5.
+  
+    numbers = [int(word) for word in s.split() if word.isdigit()]  # Извлекаем числа из строки
+    return sum(1 for num in numbers if num < 5)  # Считаем числа меньше 5
 
-import re
-
-def find_dates(text):
-
-    # Задание 5: Поиск всех дат в формате "31 февраля 2007".
-    # :param text: Входная строка.
-    # :return: Список найденных дат.
-
-    # Регулярное выражение для поиска дат в формате "день месяц год"
-    date_pattern = r'\d{1,2}\s[а-яА-Я]+\s\d{4}'
-    dates = re.findall(date_pattern, text)  # Ищем все совпадения
-    return dates
-
-# Пример использования
-text = "События произошли 31 февраля 2007 и 15 марта 2020 года."
-print("Найденные даты:", find_dates(text))
+s = "1 2 3 4 5 6 7 8 9"
+print("Количество чисел меньше 5:", count_numbers_less_than_five(s))  
