@@ -1,14 +1,11 @@
 
-
-def find_unused_latin_chars(s):
-
-    # Задание 7: Поиск незадействованных символов латиницы в строке.
+def count_digits_greater_than_five(s):
+    
+    # Задание 8: Подсчет количества цифр в строке, значение которых больше 5.
     # :param s: Входная строка.
-    # :return: Множество незадействованных символов латиницы.
+    # :return: Количество цифр больше 5.
+ 
+    return sum(1 for char in s if char.isdigit() and int(char) > 5)  # Считаем цифры больше 5
 
-    used_chars = set(s.lower())  # Собираем использованные символы
-    latin_chars = set('abcdefghijklmnopqrstuvwxyz')  # Все символы латиницы
-    return latin_chars - used_chars  # Разница между всеми символами и использованными
-
-s = "Hello world"
-print("Незадействованные символы латиницы:", find_unused_latin_chars(s))
+s = "123456789"
+print("Количество цифр больше 5:", count_digits_greater_than_five(s))
