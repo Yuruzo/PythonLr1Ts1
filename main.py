@@ -1,14 +1,12 @@
 
-def elements_between_first_and_last_max(arr):
+def min_even_element(arr):
 
-    # Задание 17: Нахождение элементов между первым и последним максимальным.
+    # Задание 18: Нахождение минимального четного элемента.
     # :param arr: Целочисленный массив.
-    # :return: Список элементов.
+    # :return: Минимальный четный элемент.
 
-    max_val = max(arr)
-    first_idx = arr.index(max_val)
-    last_idx = len(arr) - arr[::-1].index(max_val) - 1
-    return arr[first_idx+1:last_idx]
+    even_elements = [x for x in arr if x % 2 == 0]
+    return min(even_elements) if even_elements else None
 
 arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
-print("Элементы между первым и последним максимальным :", elements_between_first_and_last_max(arr))
+print("Минимальный четный элемент :", min_even_element(arr))
