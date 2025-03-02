@@ -1,12 +1,14 @@
 
-def count_numbers_less_than_five(s):
-    
-    # Задание 6: Подсчет количества чисел в строке, значение которых меньше 5.
-    # :param s: Входная строка.
-    # :return: Количество чисел меньше 5.
-  
-    numbers = [int(word) for word in s.split() if word.isdigit()]  # Извлекаем числа из строки
-    return sum(1 for num in numbers if num < 5)  # Считаем числа меньше 5
 
-s = "1 2 3 4 5 6 7 8 9"
-print("Количество чисел меньше 5:", count_numbers_less_than_five(s))  
+def find_unused_latin_chars(s):
+
+    # Задание 7: Поиск незадействованных символов латиницы в строке.
+    # :param s: Входная строка.
+    # :return: Множество незадействованных символов латиницы.
+
+    used_chars = set(s.lower())  # Собираем использованные символы
+    latin_chars = set('abcdefghijklmnopqrstuvwxyz')  # Все символы латиницы
+    return latin_chars - used_chars  # Разница между всеми символами и использованными
+
+s = "Hello world"
+print("Незадействованные символы латиницы:", find_unused_latin_chars(s))
